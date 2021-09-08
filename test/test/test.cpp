@@ -76,30 +76,60 @@ using namespace std;
 //		cout << "字符数组第一个字符为" << arr[0] << endl;
 //}
 
-//test 7 测试结构体中能否有函数，以及函数的份文件编写。 结论：①结构体内可以有函数。②结构体默认访问权限为public，如果改为private结构体外不能访问。③
+//test 7 测试结构体中能否有函数，以及函数的份文件编写。 结论：①结构体内可以有函数。②结构体默认访问权限为public，如果改为private结构体外不能访问。
+															//③函数的头文件中必须声明函数，函数源文件中不必声明头文件；④函数可以使用头文件中头文件，函数源文件命名不必与头文件一致。
 
-struct Book
-{
-//private:
-	string bookname;
-	string author;
-	int		time;
+//struct Book
+//{
+////private:
+//	string bookname;
+//	string author;
+//	int		time;
+//
+////private:
+//public:
+//	void showbook()
+//	{
+//		cout << "书名为：" << bookname << endl;
+//		cout << "作者是：" << author << endl;
+//		cout << "创作日期" << time <<endl;
+//	}
+//}jinpingmei = { "jinpingmei","lqw",20210907 };
+//
+//void 7()
+//{
+//	jinpingmei.showbook();
+//	Book rouputuan = { "rouputuan",jinpingmei.author,20210908};
+//	rouputuan.showbook();
+//}
 
-//private:
-public:
-	void showbook()
-	{
-		cout << "书名为：" << bookname << endl;
-		cout << "作者是：" << author << endl;
-		cout << "创作日期" << time <<endl;
-	}
-}jinpingmei = { "jinpingmei","lqw",20210907 };
+//#include<function_head.h>    我定义的头文件
+
+//test8 测试new和delete关键字和堆区的特性。  结论：①可以用new创建匿名堆空间。
+//②申请数组堆空间后，如果给堆赋值超过申请数量依然可以成功赋值和输出，但当你delete这个指针释放时由于申请的空间和使用的空间大小不一致会报错。
+
+//void 8()
+//{
+//	//new int(175);
+//	//int*a=new int(175);  申请单个空间
+//	int* a = new int[10];
+//	for (int i = 0; i < 12; i++)
+//	{
+//		*(a + i )= i;
+//	}
+//	for(int i = 0; i < 11; i++)
+//	{
+//		cout << *(a + i) << endl;
+//	}
+//	cout << "堆区的值为" << a << endl << "a的大小为"<<sizeof(a) << endl;
+//
+//     delete [] a;  //报错，申请10个int空间却使用了12个空间。
+//}
+
 
 void testcurrent()
 {
-	jinpingmei.showbook();
-	Book rouputuan = { "rouputuan",jinpingmei.author,20210908};
-	rouputuan.showbook();
+
 }
 
 
