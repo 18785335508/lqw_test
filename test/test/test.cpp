@@ -127,15 +127,57 @@ using namespace std;
 //}
 
 
-void testcurrent()
-{
-
-}
-
+//test8 测试类能否访问自己内部的类的private权限的成员变量和函数。 结论：①类中访问权限默认为private。 ②大类并不能访问和调用小类中的private权限成员变量和函数。 
+//       ③小类只能调用默认构造函数，如果设定非默认构造函数，会导致默认构造函数不再提供提示小类无默认构造函数错误。  问题未探究完全，留后再看。
+//④private权限的成员属性和成员函数都不能通过对象在类外访问。
+//class smallperson
+//{
+//public:
+//
+//	void smallfunction()
+//	{
+//		cout << "这是smllperson类中的函数" << endl;
+//	}
+//	smallperson(int a)  //自己定义的有参构造函数
+//	{
+//		//this->a = a;  //通过this指针避免形参和成员属性命名冲突
+//		cout << "这是smallperson类的有参构造函数" << endl;
+//	}
+//
+//	/*smallperson()
+//		{
+//			cout << "这是small的默认构造函数" << endl;
+//		}*/
+//	int a;
+//};
+//
+//class bigperson
+//{
+//public :
+//	void test()
+//	{
+//		cout << "这是对大类下的小类中的成员属性的访问" << sp.a << endl;
+//		cout << "这是对小类下的函数调用" << endl;
+//		sp.smallfunction();
+//	}
+//	
+//	bigperson()
+//	{
+//		cout << "这是bigperson的默认构造函数" << endl;
+//	}
+//
+//	bigperson(int b)
+//	{
+//
+//		cout << "bigperson的有参构造函数" << endl;
+//		sp.a =b;
+//	}
+//	smallperson sp;
+//};
 
 int main()
 {
-	testcurrent();
+
 	system("pause");
 	return 0;
 }
