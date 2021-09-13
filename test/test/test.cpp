@@ -175,9 +175,87 @@ using namespace std;
 //	smallperson sp;
 //};
 
+//test9 测试后置自减自加的时机。  结论：后置自减自加运算在变量当次出现过后，下一次出现时已经完成了运算，无需等到当前语句执行完毕。
+//void test9()
+//{
+//	int purpose = 10;
+//	cout << purpose++ << purpose << endl;
+//}
+
+//test10 测试析构函数对于深浅拷贝和成员函数以及构造函数的类外实现 结论：①成员函数的类外实现必须在函数明前加上作用域。②拷贝构造函数参数必须是被const修饰的引用！
+																	//③深拷贝由程序员自己定义构造。
+//class Purpose
+//{
+//public:
+//	void contrast();
+//	Purpose(string,int,int);             //我定义的有参构造函数，此时默认构造函数不再提供。
+//	~Purpose();							// 由于构造函数中申请了堆空间，因此我定义了一个析构函数对对象的堆空间进行清除。
+////	Purpose(Purpose copy);           将类的值作为参数的自定义拷贝构造函数不存在，因为这种值传递的拷贝函数就是默认的拷贝函数。
+////	Purpose(Purpose * copy);		 将类的指针作为参数的自定义拷贝构造函数可以存在，但是这种构造函数仍然是浅拷贝。
+//	Purpose(const Purpose &copy);
+//	string condition;
+//	int overall;
+//	int* t;
+//};
+//
+//Purpose::Purpose(string condition,int overall,int term)
+//{
+//	this->condition = condition;
+//	this->overall = overall;
+//	t = new int(term);
+//	cout << "Purpose的构造函数" << endl;
+//}
+//
+//Purpose::~Purpose()     //我提供的析构函数。
+//{
+//	delete t;
+//	cout << "这是Purpose的析构函数" << endl;
+//}
+
+//Purpose::Purpose(Purpose copy)           
+//{
+//	this->condition = copy.condition;
+//	this->overall = copy.overall;           值为参数的拷贝构造函数
+//	this->t = copy.t;
+//}
+
+//Purpose::Purpose(Purpose * copy)
+//{
+//	this->condition = copy->condition;		指针为参数的拷贝构造函数
+//	this->overall = copy->overall;
+//	this->t = copy->t;
+//}
+
+//Purpose::Purpose(const Purpose & copy)
+//{
+//	this->condition = copy.condition;
+//	this->overall = copy.overall;			//被const修饰的引用为参数的拷贝构造函数，正确用法。
+//											//通过定义申请堆区的拷贝函数进行深拷贝，避免析构函数出现非法操作。
+//	this->t = new int(*copy.t);
+//}
+//
+//
+//
+//void Purpose::contrast()
+//{
+//	cout << "conditon=" << &condition<<endl;
+//	cout << "overall=" << overall << endl;
+//	cout << "*t_value" << *t << endl;
+//	cout << "t_positon" << t << endl;
+//}
+//
+//void test10()
+//{
+//	Purpose p = Purpose("stable", 666,123);    //这里实际是调用构造函数创建了一个匿名对象，然后将该匿名对象取名作P。
+////	Purpose p("stable", 666, 123);
+//	p.contrast();
+//	Purpose b(p);   //我并没有定义这个参数的函数重载，这个函数重载是系统提供的默认拷贝函数，拷贝方式为浅拷贝。 
+//					//这种情况下由于构造函数中有堆空间的开辟，析构函数对对象清除时会造成重复对同一片空间清除的非法操作。 要解决这种情况只有我自己定义拷贝函数进行深拷贝。
+//	b.contrast();
+//}
 int main()
 {
-
+	test10();
 	system("pause");
 	return 0;
 }
